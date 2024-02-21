@@ -1,8 +1,13 @@
 //main or starting file for the backend
 import dotenv from "dotenv";
 import express from "express";
+
+
 import authRoutes from "./routes/auth.routes.js"; 
 import messageRoutes from "./routes/message.routes.js"; 
+import userRoutes from "./routes/user.routes.js";
+
+
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import cookieParser from "cookie-parser";
  
@@ -24,6 +29,7 @@ app.get("/",(req,res)=>{
 
 app.use("/api/auth" , authRoutes);//middleware
 app.use("/api/messages" , messageRoutes);
+app.use("/api/users" , userRoutes);
 
 app.listen(PORT ,()=>{
     console.log("App is listening on port "+PORT);
