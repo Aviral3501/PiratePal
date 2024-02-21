@@ -31,12 +31,42 @@ export const sendMessage = async(req,res)=>{
     if(newMessage){
         conversation.messages.push(newMessage._id);
     }
-    await conversation.save();
-    await newMessage.save();
+
+    //add socket.io functionality here
+
+    //this runs sequentially
+   //  await conversation.save();
+   //  await newMessage.save();
+   // this would take longer --> shorter version 
+
+      await Promise.all([conversation.save() , newMessage.save()]);//this will run in parallel
 
       res.status(201).json(newMessage);
    } catch (error) {
-    console.error("Error in message controller ",error);
+    console.error("Error in message controller , in send message ",error);
     return res.status(500).json({message:"Internal server error , Message controller"});
    }
+}
+
+export const getMessages = async(req,res)=>{
+  try {
+    const {id:userToChatId} = req.params;
+    const senderId = req.user._id; // from protectroute   
+
+
+     const conversation = await Conversation.findOne({
+      participants : {$all:[senderId , userToChatId]}
+    }).populate("messages");//instead of references (i.e. messagesId) we will just show messages content(actual messages)
+
+    if(!conversation){
+      //there is no message betwwen the two
+      return res.status(200).json([]);
+    }
+    const messages = conversation.messages;
+    res.status(200).json(messages);
+    
+  } catch (error) {
+    console.error("Error in message controller , in get messages ",error);
+    return res.status(500).json({message:"Internal server error , Message controller"});
+  }
 }
