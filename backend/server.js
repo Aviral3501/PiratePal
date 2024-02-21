@@ -4,6 +4,7 @@ import express from "express";
 import authRoutes from "./routes/auth.routes.js"; 
 import messageRoutes from "./routes/message.routes.js"; 
 import connectToMongoDB from "./db/connectToMongoDB.js";
+import cookieParser from "cookie-parser";
  
 
 const app = express();
@@ -11,6 +12,7 @@ const app = express();
 
 dotenv.config();
 app.use(express.json());//middleware to parse incoming requests with json (from req.body)
+app.use(cookieParser());//middleware that parses cookies and makes them available in req.cookies
 
 //either run on port in env file or 3000
 const PORT =process.env.PORT||3000;

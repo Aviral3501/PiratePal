@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 const JWT_SECRET = "U/04yQEQGJvcgJi1wViJm+2FAs+ALKZLtQSlntRWxSk=";//secret key used to generate the token
 let NODE_ENV ="development";//for security
 
-const generateTokenansSetCookie = (userId,res)=>{
+const generateTokenAndSetCookie = (userId,res)=>{
     const token =jwt.sign({userId},JWT_SECRET,{
         expiresIn: '15d'
     })
@@ -16,5 +16,5 @@ const generateTokenansSetCookie = (userId,res)=>{
     });
 }
 
-export default generateTokenansSetCookie;
+export  default generateTokenAndSetCookie  ;
 
