@@ -19,4 +19,4 @@ const getUsersForSidebar = async(req,res)=>{
 
 }
 
-export default getUsersForSidebar;
+export default getUsersForSidebar; 
