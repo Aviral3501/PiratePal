@@ -1,5 +1,5 @@
-import Conversation from "../db/models/conversation.model.js"
-import Messsage from "../db/models/message.models.js"
+import Conversation from "../db/models/conversation.model.js";
+import Message from "../db/models/message.models.js";
 
 export const sendMessage = async(req,res)=>{
 
@@ -28,9 +28,15 @@ export const sendMessage = async(req,res)=>{
       message,
     })
 
+    if(newMessage){
+        conversation.messages.push(newMessage._id);
+    }
+    await conversation.save();
+    await newMessage.save();
+
       res.status(201).json(newMessage);
    } catch (error) {
-    console.error("Error inmessage controller ",error);
-    return res.status(500).json({message:"INternal server error , Message controller"});
+    console.error("Error in message controller ",error);
+    return res.status(500).json({message:"Internal server error , Message controller"});
    }
 }

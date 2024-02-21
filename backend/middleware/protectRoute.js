@@ -16,9 +16,9 @@ const protectRoute = async(req,res,next) => {
         }
         const user = await User.findById(decoded.userId).select(["-password"]); //we don't want to send back password in response
         if(!user){
-            return res.sratus(401).json({error: 'User not found'});
+            return res.status(401).json({error: 'User not found'});
         }
-
+        
         //if we pass all the checks then
         req.user= user;//authenticated user data without password
         next();
