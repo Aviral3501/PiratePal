@@ -1,4 +1,5 @@
 import Conversation from "../db/models/conversation.model.js"
+import Messsage from "../db/models/message.models.js"
 
 export const sendMessage = async(req,res)=>{
 
