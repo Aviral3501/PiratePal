@@ -1,0 +1,13 @@
+.login-card {
+    background-color: white;
+    border-radius: 2cap; /* Use 'px' instead of 'cap' for pixels */
+    border: none;
+    outline:none; /* Set border style to 'solid' */
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 10px; /* Correct syntax for box shadow */
+}
+
+/* .dont-have-acc{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+} */
