@@ -8,7 +8,11 @@ function App() {
     <>
       <div className='p-4 h-screen flex items-center justify-center'>
        <Login></Login>
-       <SignUp></SignUp>
+       
+      </div>
+      <div className='p-4 h-screen flex items-center justify-center'>
+       <SignUp/>
+       
       </div>
   
     </>
