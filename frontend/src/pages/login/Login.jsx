@@ -14,16 +14,16 @@ const Login = () => {
 
             <form>
               <div>
-                <label className='=label p-2'>
+                <label className='label p-2'>
                   <span className='text-black label-text p-2 '>Username</span>
                 </label>
-                <input type="text" placeholder='Enter Username' className='w-full input input-bordered h-10 my-1'></input>
+                <input type="text" placeholder='Enter Username' className='w-full input input-bordered h-10 my-1'  autoComplete="username"></input>
 
                 <div>
                   <label className='label p-2'>
-                    <span className='text-black label-text px-2'>Password</span>
+                    <span className='text-black label-text px-2' >Password</span>
                   </label>
-                  <input type='password' placeholder='Enter password' className='w-full input input-bordered h-10'></input>
+                  <input type='password' placeholder='Enter password' className='w-full input input-bordered h-10' autoComplete="current-password"></input>
                 </div>
                 <div className="dont-have-acc">
                 <Link to="/signup" className='text-sm hover:underline hover:text-black mt-2 mx-2 inline-block'>{"Don't have an account?"}</Link>
