@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.css"
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   return (
@@ -25,7 +26,7 @@ const Login = () => {
                   <input type='password' placeholder='Enter password' className='w-full input input-bordered h-10'></input>
                 </div>
                 <div className="dont-have-acc">
-                <a href="/" className='text-sm hover:underline hover:text-black mt-2 mx-2 inline-block'>{"Don't have an account?"}</a>
+                <Link to="/signup" className='text-sm hover:underline hover:text-black mt-2 mx-2 inline-block'>{"Don't have an account?"}</Link>
                 </div>
                
 

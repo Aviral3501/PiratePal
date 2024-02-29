@@ -7,7 +7,7 @@ const MessageContainer = () => {
   const noChatSelected =true;
   return (
     <div className='md:min-w-[450px] flex flex-col'>
-      
+
 
       {noChatSelected ? <NoChatSelected/> :
         <>

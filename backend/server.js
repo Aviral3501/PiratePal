@@ -19,8 +19,8 @@ dotenv.config();
 app.use(express.json());//middleware to parse incoming requests with json (from req.body)
 app.use(cookieParser());//middleware that parses cookies and makes them available in req.cookies
 
-//either run on port in env file or 3000
-const PORT =process.env.PORT||3000;
+//either run on port in env file or 5000
+const PORT =process.env.PORT||5000;
 
 app.get("/",(req,res)=>{ 
     //root route or home route
