@@ -106,7 +106,9 @@ const SignUp = () => {
 
 
                 <div>
-                  <button className='btn btn-block btn-sm mt-2' >Sign Up</button>
+                  <button className={`btn btn-block btn-sm mt-2`} disabled={loading}>
+                    {loading ? "Signing Up..." : "Sign Up"}
+                  </button>
                 </div>
                 
               </div>
