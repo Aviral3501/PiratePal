@@ -1,9 +1,8 @@
 import React from 'react'
 import SearchInput from './SearchInput'
-
-import Logout from './Logout'
 import "./sidebar.css"
 import Conversations from './Conversations'
+import LogoutButton from './LogoutButton'
 
 
 const Sidebar = () => {
@@ -13,7 +12,7 @@ const Sidebar = () => {
        <SearchInput/>
        <div className="divider"></div> 
        <Conversations/>
-       <Logout/>
+       <LogoutButton/>
       
     </div>
   )

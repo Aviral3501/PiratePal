@@ -15,18 +15,27 @@ const SignUp = () => {
     gender: ""
   });
 
-  const {loading,signup} =useSignUp();
+  const { loading, signup } = useSignUp();
 
 
   const handleCheckboxChange = (gender) => {
     setInputs({ ...inputs, gender: gender })
   }
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     //tp prevent reloading  of the page after submitting the form
     e.preventDefault();
     console.log(inputs);
     await signup(inputs);
+
+    // Clear the input fields by setting all values to an empty string
+    setInputs({
+      fullName: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+      gender: ""
+    });
 
   }
 
@@ -99,6 +108,7 @@ const SignUp = () => {
                 <div>
                   <button className='btn btn-block btn-sm mt-2' >Sign Up</button>
                 </div>
+                
               </div>
             </form>
           </div>
