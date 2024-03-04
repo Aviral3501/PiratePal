@@ -10,7 +10,7 @@ const MessageInput = () => {
     e.preventDefault();
     if(!message)return;
     //else sedn th emesssage
-    await sendMessage({text: message});
+    await sendMessage(message);
     setMessage("");
    
     
