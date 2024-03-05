@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {BsSend} from 'react-icons/bs';
 import useSendMessage from '../../hooks/useSendMessage';
+import toast from 'react-hot-toast';
 
 const MessageInput = () => {
   const [message,setMessage]=useState("");
@@ -8,7 +9,10 @@ const MessageInput = () => {
 
   const handleSubmit = async(e)=>{
     e.preventDefault();
-    if(!message)return;
+    if(!message){
+      toast.error("Enter  a message!");
+      return;
+    };
     //else sedn th emesssage
     await sendMessage(message);
     setMessage("");

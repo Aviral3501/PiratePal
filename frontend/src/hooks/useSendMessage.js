@@ -24,7 +24,7 @@ const useSendMessage = () => {
                 throw new Error(data.error);
             }
             //no error
-            setMessages([...messages,data.message]);
+            setMessages([...messages,data]);
         } catch (error) {
             console.error("Error in the useSendMessage hook" , error);
             toast.error(error.message);
