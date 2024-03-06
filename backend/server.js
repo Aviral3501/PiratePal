@@ -1,40 +1,35 @@
-//main or starting file for the backend
-import dotenv from "dotenv";
+import path from "path";
 import express from "express";
-
-
-import authRoutes from "./routes/auth.routes.js"; 
-import messageRoutes from "./routes/message.routes.js"; 
-import userRoutes from "./routes/user.routes.js";
-
-
-import connectToMongoDB from "./db/connectToMongoDB.js";
+import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
+import authRoutes from "./routes/auth.routes.js";
+import messageRoutes from "./routes/message.routes.js";
+import userRoutes from "./routes/user.routes.js";
+
+import connectToMongoDB from "./db/connectToMongoDB.js";
 import { app, server } from "./socket/socket.js";
 
- 
+const PORT = process.env.PORT || 5000;
 
-
-
+const __dirname = path.resolve();
 
 dotenv.config();
-app.use(express.json());//middleware to parse incoming requests with json (from req.body)
-app.use(cookieParser());//middleware that parses cookies and makes them available in req.cookies
 
-//either run on port in env file or 5000
-const PORT =process.env.PORT||5000;
+app.use(express.json()); // to parse the incoming requests with JSON payloads (from req.body)
+app.use(cookieParser());
 
-app.get("/",(req,res)=>{ 
-    //root route or home route
-    res.send({message:"Welcome to our API"});
-})
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
+app.use("/api/users", userRoutes);
 
-app.use("/api/auth" , authRoutes);//middleware
-app.use("/api/messages" , messageRoutes);
-app.use("/api/users" , userRoutes);
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-server.listen(PORT ,()=>{
-    console.log("App is listening on port "+PORT);
-    connectToMongoDB();
-}) 
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
+
+server.listen(PORT, () => {
+	connectToMongoDB();
+	console.log(`Server Running on port ${PORT}`);
+});

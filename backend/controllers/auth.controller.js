@@ -69,7 +69,6 @@ export const login = async(req,res) =>{
         }
 
         //user exists and pasword is correct
-        console.log("loggged in");
         generateTokenansSetCookie(user._id,res);
         return res.status(200).json({
             _id:user._id,
